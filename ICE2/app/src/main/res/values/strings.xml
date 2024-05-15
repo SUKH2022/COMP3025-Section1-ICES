@@ -5,4 +5,5 @@
     <string name="name_string">Hello, Sukhpreet Saini!</string>
     <string name="click_me">Click Me!</string>
     <string name="clicked">Clicked!</string>
+    <string name="and_me">And Me!</string>
 </resources>

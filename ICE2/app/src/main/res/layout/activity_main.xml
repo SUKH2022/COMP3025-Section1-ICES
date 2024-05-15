@@ -19,7 +19,7 @@
         android:textColor="@color/design_default_color_secondary"
         android:textSize="@dimen/txt_size"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/clickMeButton"
+        app:layout_constraintBottom_toTopOf="@id/horizontalLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,22 +29,35 @@
     <LinearLayout
         android:id="@+id/horizontalLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="13dp"
-        tools:layout_editor_absoluteY="10dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/clickMeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_marginStart="@dimen/standard_margin"
             android:backgroundTint="@color/blue"
             android:text="@string/click_me"
-            android:textSize="@dimen/text_size"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/helloWorldTextView"/>
+            android:textSize="@dimen/txt_size"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/anotherButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:layout_marginEnd="@dimen/standard_margin"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:text="@string/and_me"
+            android:textSize="@dimen/txt_size"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

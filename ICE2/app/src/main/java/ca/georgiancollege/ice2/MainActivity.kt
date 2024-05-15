@@ -2,7 +2,9 @@ package ca.georgiancollege.ice2
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -42,9 +44,18 @@ class MainActivity : AppCompatActivity()
             Log.i("onCreate", "Click Me Button Clicked")
 
             binding.helloWorldTextView.text = getString(R.string.clicked)
-
 //            println("printing for the Click me button")
-
         }
+        val anotherButton = binding.anotherButton
+
+        anotherButton.setOnClickListener {
+            Log.i("onCreate","Another Button was Clicked!")
+
+            binding.helloWorldTextView.text = getString(R.string.name_string)
+        }
+    }
+    fun sharedEventHandler(view: View)
+    {
+
     }
 }
