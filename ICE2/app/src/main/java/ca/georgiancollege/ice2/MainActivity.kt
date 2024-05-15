@@ -1,12 +1,14 @@
 package ca.georgiancollege.ice2
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import ca.georgiancollege.ice2.databinding.ActivityMainBinding
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity()
 {
@@ -34,5 +36,15 @@ class MainActivity : AppCompatActivity()
         helloWorldTextView.text = getString(R.string.good_bye_string)
 //        change the txt property
         helloWorldTextView.text = getString(R.string.name_string)
+
+        val clickMeButton = binding.clickMeButton
+        clickMeButton.setOnClickListener{
+            Log.i("onCreate", "Click Me Button Clicked")
+
+            binding.helloWorldTextView.text = getString(R.string.clicked)
+
+//            println("printing for the Click me button")
+
+        }
     }
 }
