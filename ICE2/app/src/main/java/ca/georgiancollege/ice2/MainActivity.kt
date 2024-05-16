@@ -39,14 +39,20 @@ class MainActivity : AppCompatActivity()
         helloWorldTextView.text = getString(R.string.name_string)
 
         val clickMeButton = binding.clickMeButton
-        clickMeButton.setOnClickListener{view ->
-            sharedEventHandler(view)
-//            Log.i("onCreate", "Click Me Button Clicked")
-//            binding.helloWorldTextView.text = getString(R.string.clicked)
+        clickMeButton.setOnClickListener{
+            Log.i("onCreate", "Click Me Button Clicked")
+            binding.helloWorldTextView.text = getString(R.string.clicked)
 //            println("printing for the Click me button")
         }
         val anotherButton = binding.anotherButton
-        anotherButton.setOnClickListener {view ->
+        anotherButton.setOnClickListener {
+            Log.i("onCreate","Another Button was Clicked!")
+
+            binding.helloWorldTextView.text = getString(R.string.name_string)
+        }
+
+        val thirdButton = binding.thirdButton
+        thirdButton.setOnClickListener{view ->
             sharedEventHandler(view)
         }
     }
