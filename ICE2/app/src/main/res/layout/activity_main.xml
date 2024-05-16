@@ -12,7 +12,7 @@
         android:id="@+id/helloWorldTextView"
         android:layout_width="364dp"
         android:layout_height="53dp"
-        android:background="@color/black"
+        android:background="@android:color/transparent"
         android:fontFamily="cursive"
         android:text="@string/name_string"
         android:textAlignment="center"
@@ -49,7 +49,7 @@
 
         <Button
             android:id="@+id/anotherButton"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/standard_margin"
             android:layout_marginEnd="@dimen/standard_margin"

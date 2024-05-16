@@ -3,8 +3,6 @@ package ca.georgiancollege.ice2
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.TextView
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +13,7 @@ import kotlin.math.log
 class MainActivity : AppCompatActivity()
 {
     private lateinit var binding: ActivityMainBinding
+    private var isClicked = false
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -40,22 +39,26 @@ class MainActivity : AppCompatActivity()
         helloWorldTextView.text = getString(R.string.name_string)
 
         val clickMeButton = binding.clickMeButton
-        clickMeButton.setOnClickListener{
-            Log.i("onCreate", "Click Me Button Clicked")
-
-            binding.helloWorldTextView.text = getString(R.string.clicked)
+        clickMeButton.setOnClickListener{view ->
+            sharedEventHandler(view)
+//            Log.i("onCreate", "Click Me Button Clicked")
+//            binding.helloWorldTextView.text = getString(R.string.clicked)
 //            println("printing for the Click me button")
         }
         val anotherButton = binding.anotherButton
-
-        anotherButton.setOnClickListener {
-            Log.i("onCreate","Another Button was Clicked!")
-
-            binding.helloWorldTextView.text = getString(R.string.name_string)
+        anotherButton.setOnClickListener {view ->
+            sharedEventHandler(view)
         }
     }
     fun sharedEventHandler(view: View)
     {
-
+        Log.i("onCreate", "Button Clicked!")
+        // it is used to toggle isClicked state from false to true
+        isClicked = !isClicked
+        if (isClicked) {
+            binding.helloWorldTextView.text = getString(R.string.clicked)
+        } else {
+            binding.helloWorldTextView.text = getString(R.string.good_bye_string)
+        }
     }
 }
