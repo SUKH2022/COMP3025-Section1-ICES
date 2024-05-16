@@ -52,8 +52,8 @@ class MainActivity : AppCompatActivity()
         }
 
         val thirdButton = binding.thirdButton
-        thirdButton.setOnClickListener{view ->
-            sharedEventHandler(view)
+        thirdButton.setOnClickListener{
+            sharedEventHandler(binding.thirdButton)
         }
     }
     fun sharedEventHandler(view: View)
