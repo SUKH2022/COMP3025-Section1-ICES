@@ -19,11 +19,11 @@ class MainActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
 
-//        instantiates an object of type ActivityMainBinding
+        // instantiates an object of type ActivityMainBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
 
-//sets the content view to the "super view" or main view grp
+        //sets the content view to the "super view" or main view grp
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -31,28 +31,28 @@ class MainActivity : AppCompatActivity()
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-//        this line created the reference to the TxtView
-//        val helloWorldTextView = findViewById<TextView>(R.id.helloWorldTextView)
+        // this line created the reference to the TxtView
         val helloWorldTextView = binding.helloWorldTextView
         helloWorldTextView.text = getString(R.string.good_bye_string)
-//        change the txt property
+        // change the txt property
         helloWorldTextView.text = getString(R.string.name_string)
 
         val clickMeButton = binding.clickMeButton
         clickMeButton.setOnClickListener{
+            // calling the sharedEventHandler func
             sharedEventHandler(binding.clickMeButton)
-//            Log.i("onCreate", "Click Me Button Clicked")
-//            binding.helloWorldTextView.text = getString(R.string.clicked)
-//            println("printing for the Click me button")
+            // display Log message for debugging
+            Log.i("onCreate", "Click Me Button Clicked")
         }
+
         val anotherButton = binding.anotherButton
         anotherButton.setOnClickListener {
             sharedEventHandler(binding.anotherButton)
-//            Log.i("onCreate","Another Button was Clicked!")
-//            binding.helloWorldTextView.text = getString(R.string.name_string)
+            Log.i("onCreate","Another Button was Clicked!")
         }
     }
-    fun sharedEventHandler(view: View) {
+    // This function is used to toggle b/w buttons with Kotlin
+    private fun sharedEventHandler(view: View) {
         Log.i("onCreate", "Button Clicked!")
         // it is used to toggle isClicked state from false to true
         isClicked = !isClicked
