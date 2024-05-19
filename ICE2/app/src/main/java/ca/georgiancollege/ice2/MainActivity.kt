@@ -40,31 +40,26 @@ class MainActivity : AppCompatActivity()
 
         val clickMeButton = binding.clickMeButton
         clickMeButton.setOnClickListener{
-            Log.i("onCreate", "Click Me Button Clicked")
-            binding.helloWorldTextView.text = getString(R.string.clicked)
+            sharedEventHandler(binding.clickMeButton)
+//            Log.i("onCreate", "Click Me Button Clicked")
+//            binding.helloWorldTextView.text = getString(R.string.clicked)
 //            println("printing for the Click me button")
         }
         val anotherButton = binding.anotherButton
         anotherButton.setOnClickListener {
-            Log.i("onCreate","Another Button was Clicked!")
-
-            binding.helloWorldTextView.text = getString(R.string.name_string)
-        }
-
-        val thirdButton = binding.thirdButton
-        thirdButton.setOnClickListener{
-            sharedEventHandler(binding.thirdButton)
+            sharedEventHandler(binding.anotherButton)
+//            Log.i("onCreate","Another Button was Clicked!")
+//            binding.helloWorldTextView.text = getString(R.string.name_string)
         }
     }
-    fun sharedEventHandler(view: View)
-    {
+    fun sharedEventHandler(view: View) {
         Log.i("onCreate", "Button Clicked!")
         // it is used to toggle isClicked state from false to true
         isClicked = !isClicked
         if (isClicked) {
             binding.helloWorldTextView.text = getString(R.string.clicked)
         } else {
-            binding.helloWorldTextView.text = getString(R.string.good_bye_string)
+            binding.helloWorldTextView.text = getString(R.string.name_string)
         }
     }
 }
