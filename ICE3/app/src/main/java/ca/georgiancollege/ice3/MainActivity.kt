@@ -1,0 +1,65 @@
+package ca.georgiancollege.ice3
+
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import ca.georgiancollege.ice3.databinding.ActivityMainBinding
+
+class MainActivity : AppCompatActivity()
+{
+    private lateinit var binding: ActivityMainBinding
+    private var isClicked = false
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+
+        // instantiates an object of type ActivityMainBinding
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        enableEdgeToEdge()
+
+        //sets the content view to the "super view" or main view grp
+        setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+        // this line created the reference to the TxtView
+        val helloWorldTextView = binding.helloWorldTextView
+        helloWorldTextView.text = getString(R.string.good_bye_string)
+        // change the txt property
+        helloWorldTextView.text = getString(R.string.name_string)
+
+        val clickMeButton = binding.clickMeButton
+        clickMeButton.setOnClickListener{
+            // calling the sharedEventHandler func
+            sharedEventHandler(binding.clickMeButton)
+            // display Log message for debugging
+            Log.i("onCreate", "Click Me Button Clicked")
+        }
+
+        val anotherButton = binding.anotherButton
+        anotherButton.setOnClickListener {
+            sharedEventHandler(binding.anotherButton)
+            Log.i("onCreate","Another Button was Clicked!")
+        }
+    }
+    // This function is used to toggle b/w buttons with Kotlin
+    private fun sharedEventHandler(view: View) {
+        Log.i("onCreate", "Button Clicked!")
+        // it is used to toggle isClicked state from false to true
+        isClicked = !isClicked
+        if (isClicked) {
+            binding.helloWorldTextView.text = getString(R.string.clicked)
+        } else {
+            binding.helloWorldTextView.text = getString(R.string.name_string)
+        }
+
+    }
+}
