@@ -6,17 +6,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:drawable/alert_dark_frame"
-    tools:context=".MainActivity" >
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="119dp"
-        android:layout_height="62dp"
-        android:fontFamily="@font/fa_solid_900"
-        android:text="@string/house"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".MainActivity" />
