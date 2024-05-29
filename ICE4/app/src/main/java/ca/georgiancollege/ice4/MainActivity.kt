@@ -25,42 +25,29 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // Add listeners for operator buttons
-        val operatorButtons = listOf(
-            binding.clearButton, binding.percentButton, binding.deleteButton,
-            binding.divideButton, binding.mulitplyButton, binding.minusButton,
-            binding.plusButton, binding.equalsButton
+        val operandButtons = arrayOf(
+            binding.oneButton, binding.twoButton, binding.threeButton, binding.fourButton,
+            binding.fiveButton, binding.sixButton, binding.sevenButton, binding.eightButton,
+            binding.nineButton, binding.zeroButton, binding.decimalButton, binding.deleteButton,
+            binding.plusMinusButton, binding.clearButton
         )
-        setButtonClickListeners(operatorButtons, this::operatorButtonClicked)
 
-        // Add listeners for number buttons
-        val numberButtons = listOf(
-            binding.zeroButton, binding.oneButton, binding.twoButton,
-            binding.threeButton, binding.fourButton, binding.fiveButton,
-            binding.sixButton, binding.sevenButton, binding.eightButton,
-            binding.nineButton, binding.decimalButton, binding.plusMinusButton
+        val operatorButtons = arrayOf(
+            binding.mulitplyButton, binding.plusButton, binding.percentButton, binding.minusButton,
+            binding.equalsButton, binding.divideButton
         )
-        setButtonClickListeners(numberButtons, this::numberButtonClicked)
+
+        operandButtons.forEach{it.setOnClickListener{operandHandler(it.tag as String)}}
+        operatorButtons.forEach{it.setOnClickListener{operatorHandler(it.tag as String)}}
     }
 
-    // Function to set click listeners for a list of buttons
-    private fun setButtonClickListeners(buttons: List<Button>, clickHandler: (Button) -> Unit) {
-        buttons.forEach { button ->
-            button.setOnClickListener {
-                clickHandler(button)
-            }
-        }
-    }
-
-    // Click handler for operator buttons
-    private fun operatorButtonClicked(button: Button) {
-        val tag = button.tag.toString()
+    private fun operandHandler(tag: String)
+    {
         binding.resultTextView.text = tag
     }
 
-    // Click handler for number buttons
-    private fun numberButtonClicked(button: Button) {
-        val tag = button.tag.toString()
+    private fun operatorHandler(tag: String)
+    {
         binding.resultTextView.text = tag
     }
 }
