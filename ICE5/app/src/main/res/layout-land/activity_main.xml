@@ -50,7 +50,7 @@
         <Button
             android:id="@+id/clearButton"
             style="@style/light_grey_button_land"
-            android:tag="clearButton"
+            android:tag="Clear"
             android:text="C" />
 
         <Button
@@ -62,7 +62,7 @@
         <Button
             android:id="@+id/deleteButton"
             style="@style/light_grey_button_land"
-            android:tag="deleteButton"
+            android:tag="Delete"
             android:text="@string/delete" />
 
         <Button
@@ -195,7 +195,7 @@
         <Button
             android:id="@+id/plusMinusButton"
             style="@style/light_grey_button_land"
-            android:tag="plusMinusButton"
+            android:tag="Plus_Minus"
             android:text="@string/plus_minus" />
 
         <Button
