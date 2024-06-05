@@ -1,5 +1,6 @@
 package ca.georgiancollege.ice5
 
+import android.text.method.TextKeyListener.clear
 import ca.georgiancollege.ice5.databinding.ActivityMainBinding
 
 class Calculator(dataBinding: ActivityMainBinding)
@@ -30,7 +31,7 @@ class Calculator(dataBinding: ActivityMainBinding)
         operatorButtons.forEach { it.setOnClickListener { operatorHandler(it.tag as String) } }
     }
 
-    private fun operandHandler(tag: String)
+    private fun operandHandler(tag: String): Unit
     {
         when(tag)
         {
@@ -58,13 +59,18 @@ class Calculator(dataBinding: ActivityMainBinding)
         }
     }
 
-    private fun operatorHandler(tag: String)
+    private fun operatorHandler(tag: String): Unit
     {
         when(tag) {
-            "Clear" -> {}
+            "Clear" -> clear()
             else -> {
 
             }
         }
+    }
+    private fun clear(): Unit
+    {
+        result = ""
+        binding.resultTextView.text = "0"
     }
 }
