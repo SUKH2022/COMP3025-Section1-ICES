@@ -50,7 +50,7 @@
         <Button
             android:id="@+id/clearButton"
             style="@style/light_grey_button"
-            android:tag="clearButton"
+            android:tag="Clear"
             android:text="C" />
 
         <Button

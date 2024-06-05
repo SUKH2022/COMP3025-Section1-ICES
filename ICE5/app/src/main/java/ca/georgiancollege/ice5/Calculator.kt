@@ -1,6 +1,5 @@
 package ca.georgiancollege.ice5
 
-import android.text.method.TextKeyListener.clear
 import ca.georgiancollege.ice5.databinding.ActivityMainBinding
 
 class Calculator(dataBinding: ActivityMainBinding)
@@ -43,8 +42,26 @@ class Calculator(dataBinding: ActivityMainBinding)
                     binding.resultTextView.text = result
                 }
             }
-            "Delete" -> {}
-            "Plus_Minus" -> {}
+            "Delete" -> {
+                result = result.dropLast(1)
+
+                binding.resultTextView.text = if(result.isEmpty() || result=="-") "0" else result
+            }
+            "Plus_Minus" -> {
+                if(result.startsWith("-"))
+                {
+                    result = result.substring(1)
+                    binding.resultTextView.text = result
+                }
+                else
+                {
+                    if(result.isNotEmpty())
+                    {
+                        result = "-".plus(result)
+                        binding.resultTextView.text = result
+                    }
+                }
+            }
             else -> {
                 if(binding.resultTextView.text == "0")
                 {
@@ -61,13 +78,16 @@ class Calculator(dataBinding: ActivityMainBinding)
 
     private fun operatorHandler(tag: String): Unit
     {
-        when(tag) {
+        when(tag)
+        {
             "Clear" -> clear()
             else -> {
 
             }
         }
+
     }
+
     private fun clear(): Unit
     {
         result = ""
