@@ -74,7 +74,7 @@ class Calculator(dataBinding: ActivityMainBinding) {
                 binding.resultTextView.text = if (result.isEmpty() || result == "-") "0" else result
             }
 
-            "plus_minus" -> {
+            "Plus_Minus" -> {
                 if (result.startsWith("-")) {
                     result = result.substring(1)
                 } else {
