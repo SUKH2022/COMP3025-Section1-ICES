@@ -33,9 +33,5 @@ class MainActivity : AppCompatActivity() {
         }
 
         val calculator = Calculator(binding)
-
-        for (contact in DataManager.instance.deserializeJSON(this)!!) {
-            Log.i("Contact", contact.toString())
-        }
     }
 }
