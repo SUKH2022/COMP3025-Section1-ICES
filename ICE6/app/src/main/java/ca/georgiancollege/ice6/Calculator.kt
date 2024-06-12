@@ -1,28 +1,42 @@
 package ca.georgiancollege.ice6
 
-import android.util.Log
+import android.annotation.SuppressLint
 import ca.georgiancollege.ice6.databinding.ActivityMainBinding
+import kotlin.text.*
 
-class Calculator(dataBinding: ActivityMainBinding)
-{
+class Calculator(dataBinding: ActivityMainBinding) {
     /* Simple Calculations: 1 + 2 = 3
     operand1 [operator] operand2 [equalsOperator] result
     LHS [operator] RHS [equalsOperator] result */
 
+    /**
+     * This variable stores the current displayed result on the calculator screen.
+     */
+
     private val binding: ActivityMainBinding = dataBinding
     private var result: String
-    private var currentOperand: String
-    private var currentOperator: String
+
+    // This variable stores the operands and operator entered by the user.
+    private var currentOperand1: String? = null
+    private var currentOperand2: String? = null
+    private var currentOperator: String? = null
+
+    /**
+     * This function initializes the calculator by setting the result to an empty string
+     * and calling the createButtonReferences function.
+     */
 
     init {
         result = ""
-        currentOperand = ""
-        currentOperator = ""
         createButtonReferences()
     }
 
-    private fun createButtonReferences(): Unit
-    {
+    /**
+     * This function creates references to all the operand and operator buttons on the calculator
+     * and assigns them click listeners to handle user input.
+     */
+
+    private fun createButtonReferences() {
         val operandButtons = arrayOf(
             binding.oneButton, binding.twoButton, binding.threeButton, binding.fourButton,
             binding.fiveButton, binding.sixButton, binding.sevenButton, binding.eightButton,
@@ -39,43 +53,42 @@ class Calculator(dataBinding: ActivityMainBinding)
         operatorButtons.forEach { it.setOnClickListener { operatorHandler(it.tag as String) } }
     }
 
-    private fun operandHandler(tag: String): Unit
-    {
-        when(tag)
-        {
+    /**
+     * This function handles clicks on operand buttons (0-9, ., +/-). It updates the result
+     * variable and displays the updated value on the screen.
+     *
+     * @param [tag] The text displayed on the button that was clicked.
+     */
+
+    private fun operandHandler(tag: String) {
+        when (tag) {
             "." -> {
-                if(!binding.resultTextView.text.contains("."))
-                {
-                    result += if(result.isEmpty()) "0." else "."
+                if (!binding.resultTextView.text?.contains(".")!!) {
+                    result += if (result.isEmpty()) "0." else "."
                     binding.resultTextView.text = result
                 }
             }
-            "Delete" -> {
+
+            "delete" -> {
                 result = result.dropLast(1)
-                binding.resultTextView.text = if(result.isEmpty() || result=="-") "0" else result
+                binding.resultTextView.text = if (result.isEmpty() || result == "-") "0" else result
             }
-            "Plus_Minus" -> {
-                if(result.startsWith("-"))
-                {
+
+            "plus_minus" -> {
+                if (result.startsWith("-")) {
                     result = result.substring(1)
-                    binding.resultTextView.text = result
-                }
-                else
-                {
-                    if(result.isNotEmpty())
-                    {
+                } else {
+                    if (result.isNotEmpty()) {
                         result = "-".plus(result)
-                        binding.resultTextView.text = result
                     }
                 }
+                binding.resultTextView.text = result
             }
+
             else -> {
-                if(binding.resultTextView.text == "0")
-                {
+                if (binding.resultTextView.text == "0") {
                     result = tag
-                }
-                else
-                {
+                } else {
                     result += tag
                 }
                 binding.resultTextView.text = result
@@ -83,50 +96,82 @@ class Calculator(dataBinding: ActivityMainBinding)
         }
     }
 
-    private fun operatorHandler(tag: String): Unit
-    {
-        if(tag != "Clear")
-        {
-            if(currentOperand.isNotEmpty())
-            {
-                when(currentOperator)
-                {
-                    "Plus" -> add()
+    /**
+     * This function handles clicks on operator buttons (+, -, *, /, =, C). It performs the
+     * selected operation on the current operands and displays the result.
+     *
+     * @param [tag] The text displayed on the button that was clicked.
+     */
+
+    private fun operatorHandler(tag: String) {
+        when (tag) {
+            "clear" -> clear()
+            "equal" -> calculateResult()
+            else -> {
+                if (result.isNotEmpty()) {
+                    if (currentOperand1 == null) {
+                        currentOperand1 = result
+                        currentOperator = tag
+                        result = ""
+                    } else if (currentOperand2 == null) {
+                        currentOperand2 = result
+                        calculateResult()
+                        currentOperand1 = binding.resultTextView.text.toString()
+                        currentOperator = tag
+                        result = ""
+                    }
                 }
             }
-            else
-            {
-                currentOperand = binding.resultTextView.text.toString()
-                result = ""
-                binding.resultTextView.text = ""
+        }
+    }
+
+    /**
+     * This function calculates the result of the current expression based on the stored operands
+     * and operator. It updates the display with the formatted result and clears the stored operands
+     * for the next calculation.
+     *
+     */
+
+    private fun calculateResult() {
+        if (currentOperand1 != null && currentOperator != null) {
+            currentOperand2 = result
+            val resultValue = when (currentOperator) {
+                "plus" -> currentOperand1!!.toDouble() + currentOperand2!!.toDouble()
+                "minus" -> currentOperand1!!.toDouble() - currentOperand2!!.toDouble()
+                "multiple" -> currentOperand1!!.toDouble() * currentOperand2!!.toDouble()
+                "divide" -> currentOperand1!!.toDouble() / currentOperand2!!.toDouble()
+                else -> 0.0
             }
-            currentOperator = tag
+            binding.resultTextView.text = formatResult(resultValue)
+            clearOperands()
         }
-        else
-        {
-            clear()
-        }
-
     }
 
-    private fun clear(): Unit
-    {
+    /**
+     * This function clears the calculator display and resets all stored operands and operator.
+     */
+    private fun clear() {
         result = ""
-        currentOperand = ""
-        currentOperator = ""
         binding.resultTextView.text = "0"
+        clearOperands()
     }
 
-    private fun add(): Unit
-    {
-        if(currentOperand.contains(".") || result.contains("."))
-        {
-            result = (currentOperand.toFloat() + result.toFloat()).toString()
-        }
-        else
-        {
-            result = (currentOperand.toInt() + result.toInt()).toString()
-        }
-        binding.resultTextView.text = result
+    /**
+     * This function clears the stored operands and operator, effectively resetting the calculator
+     * for the next calculation.
+     */
+    private fun clearOperands() {
+        currentOperand1 = null
+        currentOperand2 = null
+        currentOperator = null
+    }
+
+    //Format the result if the result is an integer
+    @SuppressLint("DefaultLocale")
+    private fun formatResult(value: Double): String {
+        return if (value == value.toLong().toDouble()) {
+            value.toLong().toString()
+        } else String.format("%.8f", value).trimEnd('0')
+            .trimEnd('.')
     }
 }
