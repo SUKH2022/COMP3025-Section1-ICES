@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity() {
 //
 //        Log.i("onCreate - asset", getTextFromAsset(this, "contacts.json"))
 
-//        for (contact in DataManager.instance.deserializeJSON(this)!!) {
-//            Log.i("contacts", contact.toString())
-//        }
+        for (contact in DataManager.instance.deserializeJSON(this)!!) {
+            Log.i("contacts", contact.toString())
+        }
     }
 
 //    private fun getTextFromResource(context: Context, resourceId: Int): String {

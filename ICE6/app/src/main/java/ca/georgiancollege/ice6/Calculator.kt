@@ -69,7 +69,7 @@ class Calculator(dataBinding: ActivityMainBinding) {
                 }
             }
 
-            "delete" -> {
+            "Delete" -> {
                 result = result.dropLast(1)
                 binding.resultTextView.text = if (result.isEmpty() || result == "-") "0" else result
             }
