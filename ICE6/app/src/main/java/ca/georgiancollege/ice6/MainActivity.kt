@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             Log.i("contacts", contact.toString())
         }
     }
-
+//
 //    private fun getTextFromResource(context: Context, resourceId: Int): String {
 //        return context.resources.openRawResource(resourceId)
 //            .bufferedReader()
