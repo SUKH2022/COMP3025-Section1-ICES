@@ -28,7 +28,9 @@
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_add"
+        android:backgroundTint="#bce9d0"
+        android:src="@drawable/ic_add"
+        app:shapeAppearanceOverlay="@style/FabShape"
         tools:ignore="SpeakableTextPresentCheck"
         android:contentDescription="@string/add_a_tv_show" />
 
