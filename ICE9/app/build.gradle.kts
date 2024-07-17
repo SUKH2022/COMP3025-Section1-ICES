@@ -55,11 +55,13 @@ dependencies {
     // Firestore dependency
     implementation("com.google.firebase:firebase-firestore")
 
+    // Authentication dependency
+    implementation("com.google.firebase:firebase-auth")
+
     // ViewModel and Lifecylce dependencies
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3")
     implementation("androidx.activity:activity-ktx:1.9.0")
-    implementation("com.google.firebase:firebase-auth")
 
     //Testing dependency
     testImplementation(libs.junit)
