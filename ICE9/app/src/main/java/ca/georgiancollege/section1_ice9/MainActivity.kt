@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     // Store last user interaction time
     private var lastActiveTime = 0L
     // Inactivity threshold in milliseconds (1 minute)
-    private val THRESHOLD = 60000L
+    private val THRESHOLD = 3000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
