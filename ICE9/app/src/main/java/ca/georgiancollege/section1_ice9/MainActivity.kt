@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ca.georgiancollege.section1_ice9.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.logging.Handler
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -22,13 +23,12 @@ class MainActivity : AppCompatActivity() {
             putExtra("tvShowId", tvShow.id)
         }
         startActivity(intent)
-        // Update on user interaction
         updateLastActiveTime()
     }
 
     // Store last user interaction time
     private var lastActiveTime = 0L
-    // Inactivity threshold in milliseconds (1 minute)
+    // Inactivity threshold in milliseconds
     private val THRESHOLD = 3000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +55,9 @@ class MainActivity : AppCompatActivity() {
 
         // Check if the user is logged in on app launch
         checkUserAuthentication()
+
+        // Disable buttons if user not logged in
+        disableButtonsIfNotLoggedIn()
 
         binding.addButton.setOnClickListener {
             if (isUserLoggedIn()) {
@@ -88,23 +91,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleInactivity() {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Session Expired")
-        builder.setMessage("Your session has been inactive for a while. Do you want to remain logged in?")
-        builder.setPositiveButton("Stay Logged In") { dialog, _ ->
-            dialog.dismiss()
-            // Reset inactivity timer
-            updateLastActiveTime()
+        val handler = android.os.Handler()
+        val runnable = Runnable {
+            if (isUserLoggedIn()) {
+                val builder = AlertDialog.Builder(this)
+                    .setTitle("Session Expired")
+                    .setMessage("Your session has been inactive for a while. You will be logged out.")
+                    .setPositiveButton("Log Out") { dialog, _ ->
+                        auth.signOut()
+                        redirectToLogin()
+                        dialog.dismiss()
+                    }
+                    .setCancelable(false)
+                builder.show()
+            }
         }
-        builder.setNegativeButton("Log Out") { dialog, _ ->
-            auth.signOut()
-            redirectToLogin()
-            dialog.dismiss()
-        }
-        // Prevent dismissal by tapping outside
-        builder.setCancelable(false)
-        builder.show()
+
+        // Schedule the dialog to show after 30 seconds (30000 milliseconds)
+        handler.postDelayed(runnable, 30000)
     }
+
 
     private fun checkUserAuthentication() {
         if (!isUserLoggedIn()) {
@@ -119,5 +125,11 @@ class MainActivity : AppCompatActivity() {
     private fun redirectToLogin() {
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
+    }
+
+    private fun disableButtonsIfNotLoggedIn() {
+        if (!isUserLoggedIn()) {
+            binding.addButton.isEnabled = false
+        }
     }
 }
