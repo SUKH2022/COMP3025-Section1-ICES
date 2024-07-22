@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ca.georgiancollege.section1_ice9.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.logging.Handler
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: TVShowViewModel by viewModels()
