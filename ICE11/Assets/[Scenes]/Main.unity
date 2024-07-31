@@ -313,6 +313,7 @@ MonoBehaviour:
   max: 1.78
   min: -1.78
   horizontalSpeed: 10
+  verticalPosition: -4
 --- !u!1001 &3618324772535279319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -327,7 +328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 938396669249678621, guid: 83367c4eaf6b26f4fb5ca35b1e09e82b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 938396669249678621, guid: 83367c4eaf6b26f4fb5ca35b1e09e82b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -364,6 +365,10 @@ PrefabInstance:
     - target: {fileID: 1048700378114057127, guid: 83367c4eaf6b26f4fb5ca35b1e09e82b, type: 3}
       propertyPath: m_Name
       value: Ocean
+      objectReference: {fileID: 0}
+    - target: {fileID: 4315995148544544092, guid: 83367c4eaf6b26f4fb5ca35b1e09e82b, type: 3}
+      propertyPath: horizontalSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
