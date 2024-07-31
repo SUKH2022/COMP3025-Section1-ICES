@@ -1,27 +1,20 @@
 using UnityEngine;
 
-public class PlayerBehaviour : MonoBehaviour
+public class PlayerBehaviour : GameObject
 {
-    public float max;
-    public float min;
     public float horizontalSpeed;
     public float verticalPosition;
+    public Boundary horizontalBoundary;
 
     public AudioSource yaySound;
     public AudioSource thunderSound;
 
-    void Start()
+    protected override void Start()
     {
         transform.position = new Vector3(0.0f, verticalPosition, 0.0f);
     }
 
-    void Update()
-    {
-        Move();
-        CheckBounds();
-    }
-
-    void Move()
+    protected override void Move()
     {
         if (Input.touchCount > 0)
         {
@@ -35,15 +28,15 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    void CheckBounds()
+    protected override void CheckBounds()
     {
-        if (transform.position.x <= min)
+        if (transform.position.x <= horizontalBoundary.min)
         {
-            transform.position = new Vector3(min, verticalPosition, 0.0f);
+            transform.position = new Vector3(horizontalBoundary.min, verticalPosition, 0.0f);
         }
-        else if (transform.position.x >= max)
+        else if (transform.position.x >= horizontalBoundary.max)
         {
-            transform.position = new Vector3(max, verticalPosition, 0.0f);
+            transform.position = new Vector3(horizontalBoundary.max, verticalPosition, 0.0f);
         }
     }
     void OnTriggerEnter2D(Collider2D other)
