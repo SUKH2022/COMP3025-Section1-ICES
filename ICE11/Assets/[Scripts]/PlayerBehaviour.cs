@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class PlayerBehaviour : GameObject
 {
+    [Header("Movement Properties")]
     public float horizontalSpeed;
     public float verticalPosition;
     public Boundary horizontalBoundary;
-
+    [Header("Sound FX")]
     public AudioSource yaySound;
     public AudioSource thunderSound;
 

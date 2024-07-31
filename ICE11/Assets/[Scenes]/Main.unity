@@ -332,6 +332,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1253397531425848114, guid: d3dea141ccd00424482d467fb881ba5a, type: 3}
+      propertyPath: verticalBoundary.max
+      value: -0.71428573
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253397531425848114, guid: d3dea141ccd00424482d467fb881ba5a, type: 3}
+      propertyPath: verticalBoundary.min
+      value: 5.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253397531425848114, guid: d3dea141ccd00424482d467fb881ba5a, type: 3}
+      propertyPath: horizontalBoundary.max
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253397531425848114, guid: d3dea141ccd00424482d467fb881ba5a, type: 3}
+      propertyPath: horizontalBoundary.min
+      value: -1.7
+      objectReference: {fileID: 0}
     - target: {fileID: 7060011007849581006, guid: d3dea141ccd00424482d467fb881ba5a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -458,6 +474,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3562783072464990485, guid: 9a3cc1752ffb2e34680d3a29dd82f4b3, type: 3}
+      propertyPath: horizontalBoundary.max
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562783072464990485, guid: 9a3cc1752ffb2e34680d3a29dd82f4b3, type: 3}
+      propertyPath: horizontalBoundary.min
+      value: -1.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6311452310563428665, guid: 9a3cc1752ffb2e34680d3a29dd82f4b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -515,6 +539,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1267267239176905661, guid: cebe83e588b026f48a2ff270a9e900a0, type: 3}
+      propertyPath: verticalSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267267239176905661, guid: cebe83e588b026f48a2ff270a9e900a0, type: 3}
+      propertyPath: verticalBoundary.max
+      value: -1.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267267239176905661, guid: cebe83e588b026f48a2ff270a9e900a0, type: 3}
+      propertyPath: verticalBoundary.min
+      value: 1.78
+      objectReference: {fileID: 0}
     - target: {fileID: 1688660411258095726, guid: cebe83e588b026f48a2ff270a9e900a0, type: 3}
       propertyPath: m_Name
       value: Player
