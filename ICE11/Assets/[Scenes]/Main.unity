@@ -434,6 +434,14 @@ PrefabInstance:
       value: Ocean
       objectReference: {fileID: 0}
     - target: {fileID: 4315995148544544092, guid: 83367c4eaf6b26f4fb5ca35b1e09e82b, type: 3}
+      propertyPath: boundary.max
+      value: 9.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4315995148544544092, guid: 83367c4eaf6b26f4fb5ca35b1e09e82b, type: 3}
+      propertyPath: boundary.min
+      value: -9.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4315995148544544092, guid: 83367c4eaf6b26f4fb5ca35b1e09e82b, type: 3}
       propertyPath: horizontalSpeed
       value: 5
       objectReference: {fileID: 0}
