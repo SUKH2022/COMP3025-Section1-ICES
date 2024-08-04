@@ -14,18 +14,18 @@ public class IslandController : MyGameObject
     }
 
 
-    void ResetGameObject()
+    protected override void ResetGameObject()
     {
         var randomXPosition = Random.Range(minHorizontal, maxHorizontal);
         transform.position = new Vector3(randomXPosition, maxVertical, 0.0f);
     }
 
-    void Move()
+    protected override void Move()
     {
         transform.position += new Vector3(0.0f, -verticalSpeed * Time.deltaTime, 0.0f);
     }
 
-    void CheckBounds()
+    protected override void CheckBounds()
     {
         if (transform.position.y <= minVertical)
         {

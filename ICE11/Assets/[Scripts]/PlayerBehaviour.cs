@@ -9,7 +9,7 @@ public class PlayerBehaviour : MyGameObject
     public AudioSource thunderSound;
 
 
-    void Move()
+    protected override void Move()
     {
         if (Input.touchCount > 0)
         {
@@ -25,15 +25,15 @@ public class PlayerBehaviour : MyGameObject
 
     }
 
-    void CheckBounds()
+    protected override void CheckBounds()
     {
-        if (transform.position.x <= min)
+        if (transform.position.x <= boundary.min)
         {
-            transform.position = new Vector3(min, verticalPosition, 0.0f);
+            transform.position = new Vector3(boundary.min, verticalPosition, 0.0f);
         }
-        else if (transform.position.x >= max)
+        else if (transform.position.x >= boundary.max)
         {
-            transform.position = new Vector3(max, verticalPosition, 0.0f);
+            transform.position = new Vector3(boundary.max, verticalPosition, 0.0f);
         }
     }
 

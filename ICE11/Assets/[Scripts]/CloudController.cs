@@ -24,7 +24,7 @@ public class CloudController : MyGameObject
         ResetGameObject();
     }
 
-    void ResetGameObject()
+    protected override void ResetGameObject()
     {
         var randomXPosition = Random.Range(minHorizontal, maxHorizontal);
         var randomYPosition = Random.Range(minOffscreenVertical, maxOffscreenVertical);
@@ -33,12 +33,12 @@ public class CloudController : MyGameObject
         transform.position = new Vector3(randomXPosition, randomYPosition, 0.0f);
     }
 
-    void Move()
+    protected override void Move()
     {
         transform.position += new Vector3(-horizontalSpeed * Time.deltaTime, -verticalSpeed * Time.deltaTime, 0.0f);
     }
 
-    void CheckBounds()
+    protected override void CheckBounds()
     {
         if (transform.position.y <= minVertical)
         {

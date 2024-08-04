@@ -540,6 +540,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1267267239176905661, guid: cebe83e588b026f48a2ff270a9e900a0, type: 3}
+      propertyPath: boundary.max
+      value: 1.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267267239176905661, guid: cebe83e588b026f48a2ff270a9e900a0, type: 3}
+      propertyPath: boundary.min
+      value: -1.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267267239176905661, guid: cebe83e588b026f48a2ff270a9e900a0, type: 3}
       propertyPath: verticalSpeed
       value: 5
       objectReference: {fileID: 0}
