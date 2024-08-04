@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: -6503952652103726964}
   - component: {fileID: -6605123728224467876}
   - component: {fileID: 5494560980008272154}
-  - component: {fileID: 5691404347578469574}
   - component: {fileID: 6205556900332299882}
+  - component: {fileID: 5691404347578469574}
   - component: {fileID: 1267267239176905661}
   m_Layer: 0
   m_Name: Player
@@ -384,6 +384,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!50 &6205556900332299882
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688660411258095726}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!70 &5691404347578469574
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -421,33 +448,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.010993239, y: 0.03909553}
   m_Size: {x: 1.1382321, y: 0.8401898}
   m_Direction: 1
---- !u!50 &6205556900332299882
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1688660411258095726}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!114 &1267267239176905661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,14 +460,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f824667da444941824e17c9db0767e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalBoundary:
-    min: -1.78
-    max: 1.78
-  verticalSpeed: 0
+  max: 1.78
+  min: -1.78
   horizontalSpeed: 10
   verticalPosition: -4
-  horizontalBoundary:
-    min: 0
-    max: 0
   yaySound: {fileID: -6605123728224467876}
   thunderSound: {fileID: 5494560980008272154}

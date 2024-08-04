@@ -1,20 +1,15 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class OceanController : MyGameObject
 {
     public Boundary boundary;
     public float verticalSpeed;
 
-    void Start()
+    protected override void Start()
     {
         ResetGameObject();
     }
 
-    void Update()
-    {
-        Move();
-        CheckBounds();
-    }
 
     void ResetGameObject()
     {
