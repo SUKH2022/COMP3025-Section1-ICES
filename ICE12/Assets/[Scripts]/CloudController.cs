@@ -4,8 +4,7 @@ public class CloudController : MyGameObject
 {
     [Header("Movement Properties")]
     public float minVertical;
-    public float maxHorizontal;
-    public float minHorizontal;
+    public Boundary HorizontalBoundary;
     public float maxOffscreenVertical;
     public float minOffscreenVertical;
     [Range(5.0f, 10.0f)]
@@ -26,7 +25,7 @@ public class CloudController : MyGameObject
 
     protected override void ResetGameObject()
     {
-        var randomXPosition = Random.Range(minHorizontal, maxHorizontal);
+        var randomXPosition = Random.Range(HorizontalBoundary.min, HorizontalBoundary.max);
         var randomYPosition = Random.Range(minOffscreenVertical, maxOffscreenVertical);
         horizontalSpeed = Random.Range(minHorizontalSpeed, maxHorizontalSpeed);
         verticalSpeed = Random.Range(minVerticalSpeed, maxVerticalSpeed);
